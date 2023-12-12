@@ -1,0 +1,22 @@
+{
+  "Server": {
+    "dbConfig":  {
+      "production":{
+        "username": "gen_user",
+        "password": "Bestauto54",
+        "database": "default_db",
+        "host": "94.241.170.163",
+        "port":"3306",
+        "dialect": "mysql",
+        "connectionLimit" : "1000",
+        "connectTimeout"  : "60 * 60 * 1000"
+      }
+    },
+    "port": 4000,
+    "URL" : {
+      "API" : "https://beautywheel.ru/",
+      "CLIENT" : "http://localhost:3000/",
+      "ACTIVATIOLINK":"http://localhost:4000/" 
+    }
+  }
+}

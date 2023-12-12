@@ -1,0 +1,31 @@
+{
+  "development": {
+    "username": "gen_user",
+    "password": "Bestauto54",
+    "database": "default_db",
+    "host": "94.241.170.163",
+    "port":"3306",
+    "dialect": "mysql",
+    "connectionLimit" : "1000",
+    "connectTimeout"  : "60 * 60 * 1000"    
+  },
+  "test": {
+    "username": "gen_user",
+    "password": "Bestauto54",
+    "database": "default_db",
+    "host": "94.241.170.163",
+    "dialect": "mysql",
+    "connectionLimit" : "1000",
+    "connectTimeout"  : "60 * 60 * 1000"    
+  },
+  "production": {
+    "username": "gen_user",
+    "password": "Bestauto54",
+    "database": "default_db",
+    "host": "94.241.170.163",
+    "dialect": "mysql",
+    "connectionLimit" : "1000",
+    "connectTimeout"  : "60 * 60 * 1000"    
+  }
+}
+ 

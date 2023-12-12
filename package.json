@@ -1,0 +1,49 @@
+{
+  "name": "server_beautyBot",
+  "version": "1.0.0",
+  "description": "~BeautyBot microservice",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node --max_old_space_size=12000 ./server_shandalBot/index.js",
+    "client": "yarn --cwd ./client start",
+    "client:install": "yarn --cwd ./client install",
+    "client:build": "yarn --cwd ./client build",
+    "server": "NODE_ENV=development nodemon ./server_shandalBot/index.js",
+    "dev": "cross-env NODE_ENV=development run-p server client --max_old_space_size=12000" 
+  },
+  "author": "webslick",
+  "license": "ISC",
+  "dependencies": {
+
+    "@aws-sdk/client-s3": "^3.360.0",
+    "@aws-sdk/lib-storage": "^3.359.0",
+    "@mtproto/core": "6.2.0",
+    "aws-sdk": "^2.1406.0",
+    "axios": "^0.24.0", 
+    "body-parser": "^1.20.0", 
+    "cookie-parser": "^1.4.6", 
+    "crypto": "^1.0.1", 
+    "express-fileupload": "^1.4.0",
+    "express-validator": "^6.9.2",
+    "input-formdata": "^1.0.2",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.4",  
+    "nodemailer": "^6.9.3",    
+    "uuid": "^8.3.2", 
+    "config": "^3.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "node-telegram-bot-api": "^0.53.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "path": "^0.12.7",
+    "sequelize": "^6.35.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "sequelize-cli": "^6.6.2"
+  }
+}
