@@ -48,6 +48,7 @@ function botStart (ADMINSETTINGS) {
   // var list_lot = '';
   
   // var add_ceil = false;
+
   // var edit_ceil = false;
   // var tmp_ceil_lot = ''; 
   // var ceil_lot = '';
@@ -59,7 +60,17 @@ function botStart (ADMINSETTINGS) {
  
       var uniqm = false;
 
-// console.log(msg)
+      await bot.answerWebAppQuery(queryId,{
+        type: 'article',
+        id: queryId,
+        title: 'Выйгран приз',
+        input_message_content: {
+          message_text: 'Поздравляем вы выйграли ЛИцо в гавно!'
+        }
+        
+      });
+
+
 // console.log(type,"type")
   
       // if (text === '/start') { uniqm = await SESSION.isUniqmUser(id); }

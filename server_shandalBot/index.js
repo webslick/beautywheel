@@ -47,16 +47,16 @@ if (process.env.NODE_ENV === 'production') {
   })
 } 
 
-app.listen(PORT,() => {
-
-  // SESSION.getAdminItems().then(ADMINSETTINGS => {
- 
-  //   if(ADMINSETTINGS.toogle_status_bot) {
-  //     TGAPI.initialBotListner(ADMINSETTINGS);
-  //   } else {
-  //     console.log('TELEGRAMM BOT NO CONECTION...!');
-  //   }
-  // })
+app.listen(PORT,async() => {
+  // console.log(await SESSION.searchInTables('user_me',''))
+  SESSION.getAdminItems().then(ADMINSETTINGS => {
+ console.log(ADMINSETTINGS)
+    if(ADMINSETTINGS.toogle_status_bot) {
+      TGAPI.initialBotListner(ADMINSETTINGS);
+    } else {
+      console.log('TELEGRAMM BOT NO CONECTION...!');
+    }
+  })
 
   // const garbageInterval = setInterval(() => { SESSION.garbageSessions(); console.log('Проведена очистка сесии',SESSION.LOCAL_USER_SESSIONS) },60000 * 5)
   // const updateUsersInterval = setInterval(async() => {
