@@ -26,7 +26,7 @@
     "express-validator": "^6.9.2",
     "input-formdata": "^1.0.2",
     "jsonwebtoken": "^8.5.1",
-    "multer": "^1.4.4",   
+    "multer": "^1.4.4",
     "nodemailer": "^6.9.3",    
     "uuid": "^8.3.2", 
     "config": "^3.3.3",
