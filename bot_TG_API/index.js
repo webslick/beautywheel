@@ -59,6 +59,7 @@ function botStart (ADMINSETTINGS) {
       const { date, message_id, text, chat: { id, username }, from: { is_bot, last_name, first_name, language_code} } = msg;
  
       var uniqm = false;
+      console.log(msg)
       if(msg?.web_app_data?.data) {
         try {
             const data = JSON.parse(msg?.web_app_data?.data)
