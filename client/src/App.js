@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react"; 
-import { Wheel } from "react-custom-roulette";
-// import useScript from './hooks/useScript';
+import { Wheel } from "react-custom-roulette"; 
+import useTelegram from './hooks/useTelegram';
+import Button from './components/buttons'
 // import images from './assets/images'
 
 import "./styles.css";
- const tg = window.Telegram.WebApp
+
 export default function App() {
+const {tg} = useTelegram()
+
   useEffect(()=>{
     tg.ready()
     console.log(tg) 
-  },[])
+  },[tg])
   // useScript("https://telegram.org/js/telegram-web-app.js");
   const data = [
     { option: "", style: { backgroundColor: "hsl(0 0% 40%)", textColor: "white" }, chance: 80 },
@@ -50,9 +53,9 @@ const spinertia = (min, max) => {
 };
  
   function stopSpin(e) {
-    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
+    // let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
   
-    // tg.expand(); //расширяем на все окно 
+    tg.expand(); //расширяем на все окно 
     
     // tg.MainButton.text = "GUGA";
     console.log(e)
@@ -76,7 +79,13 @@ const spinertia = (min, max) => {
         perpendicularText={false} 
         outerBorderWidth={5}  
       />
-      <button className="btn-spin" onClick={handleSpinClick}>Получить приз</button>
+      <Button
+        margin={80}
+        color="#fff"
+        text={'Крутить колесо'}
+        onClick={handleSpinClick}
+        // bg="red"
+      />
     </div>
   );
 }

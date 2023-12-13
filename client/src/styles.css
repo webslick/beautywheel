@@ -8,30 +8,7 @@
     background: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
 }
-/* кнопка запуска колеса */
-.btn-spin {
-  color: white;
-  margin-top: 50px;
-  background: black;
-  border: none;
-  /* берём размер шрифта такой же, как в колесе */
-  font-size: inherit;
-  /* добавляем отступы от текста внутри кнопки */
-  padding: 0.9rem 2rem 1rem;
-  /* скругляем углы */
-  border-radius: 0.5rem;
-  /* меняем внешний вид курсора над кнопкой на руку*/
-  cursor: pointer;
-}
 
-
-/* если кнопка нажата и неактивна */
-.btn-spin:disabled {
-  /* меняем внешний вид курсора */
-  cursor: progress;
-  /* делаем кнопку полупрозрачной */
-  opacity: 0.25;
-}
 
 .bJCmFu {
   width: 100vw !important;
