@@ -80,7 +80,7 @@ const spinertia = (min, max) => {
         outerBorderWidth={5}  
       />
       <Button
-        margin={80}
+        margin={"80px 0px 80px 0px"}
         color="#fff"
         text={'Крутить колесо'}
         onClick={handleSpinClick}
