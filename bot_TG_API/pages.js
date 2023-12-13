@@ -4,7 +4,7 @@ const keyboard_main = [
   [
     {
       text: '📗 Купить1',
-      web_app: {url: 'https://master--fancy-sorbet-314ca5.netlify.app/'},
+      // web_app: {url: 'https://master--fancy-sorbet-314ca5.netlify.app/'},
       callback_data: 'purchase'
     },
     {
