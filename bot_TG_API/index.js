@@ -59,16 +59,34 @@ function botStart (ADMINSETTINGS) {
       const { date, message_id, text, chat: { id, username }, from: { is_bot, last_name, first_name, language_code} } = msg;
  
       var uniqm = false;
+      if(msg?.web_app_data?.data) {
+        try {
+            const data = JSON.parse(msg?.web_app_data?.data)
+            console.log(data)
+            // await bot.sendMessage(chatId, 'Спасибо за обратную связь!')
+            // await bot.sendMessage(chatId, 'Ваша страна: ' + data?.country);
+            // await bot.sendMessage(chatId, 'Ваша улица: ' + data?.street);
 
-      await bot.answerWebAppQuery(queryId,{
-        type: 'article',
-        id: queryId,
-        title: 'Выйгран приз',
-        input_message_content: {
-          message_text: 'Поздравляем вы выйграли ЛИцо в гавно!'
+            // setTimeout(async () => {
+            //     await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
+            // }, 3000)
+
+            // await bot.answerWebAppQuery(queryId,{
+            //   type: 'article',
+            //   id: queryId,
+            //   title: 'Выйгран приз',
+            //   input_message_content: {
+            //     message_text: 'Поздравляем вы выйграли ЛИцо в гавно!'
+            //   }
+              
+            // });
+
+
+        } catch (e) {
+            console.log(e);
         }
-        
-      });
+    }
+   
 
 
 // console.log(type,"type")
