@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"; 
-import { Wheel } from "react-custom-roulette"; 
+import React, { useEffect,useCallback, useState } from "react"; 
+import { Wheel } from "react-custom-roulette";  
 import useTelegram from './hooks/useTelegram';
 import Button from './components/buttons'
 // import images from './assets/images'
@@ -58,9 +58,10 @@ const spinertia = (min, max) => {
     tg.expand(); //расширяем на все окно 
     
     // tg.MainButton.text = "GUGA";
-    console.log(e)
-    console.log(tg) 
-    tg.sendData(JSON.stringify({userinfo: tg.initDataUnsafe.user, prize: prizeNumber})); 
+  
+    useCallback(()=>{
+      tg.sendData(JSON.stringify({userinfo: tg.initDataUnsafe.user, prize: prizeNumber})); 
+    },[])
     console.log("stoppppppppp");
     setMustSpin(false);
   }
