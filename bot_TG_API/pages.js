@@ -4,7 +4,7 @@ const keyboard_main = [
   [
     {
       text: '📗 Купить',
-      web_app: {url: 'https://master--fancy-sorbet-314ca5.netlify.app/'},
+      web_app: { url: 'https://master--fancy-sorbet-314ca5.netlify.app/' },
       callback_data: 'purchase'
     },
     {
@@ -17,6 +17,26 @@ const keyboard_main = [
 const main = {
   text :``,
   buttons: keyboard_main
+};
+// 📗📕 📃 📸 💵 ➖ ➕ ⚠️ 1⃣ 2⃣ 3⃣ 4⃣
+
+const inline_keyboard_main = [
+  [
+    {
+      text: 'Да, хочу! ',
+      web_app: { url: 'https://master--fancy-sorbet-314ca5.netlify.app/' },
+      callback_data: 'givemenumber'
+    },
+    {
+      text: 'Спасибо, но нет..', 
+      callback_data: 'nothanks' 
+    } 
+  ], 
+];
+
+const inline_main = {
+  text :``,
+  buttons: inline_keyboard_main
 };
 
 const keyboard_sales = [
@@ -209,12 +229,9 @@ function changePage(settings, type, pages) {
   let arr = '';
 
   switch (type) {
-    case 'main':
-      info.possibility_main.map(element => {arr += "\n ✅ " + element +'\n'})
-      pages.text = `*${info.welcome_main}*
-    
-      *Наш бот поможет Вам:*\n${arr}\n ✅ База товаров обновляется *каждые ${info.minutes} минут.* \n
-      *Вы находитесь в главном меню*\n\n
+    case 'main': 
+      pages.text = `*${info.welcome_main}* 
+      *Наш бот поможет Вам:* 
       `
       break;
     case 'mainagain':

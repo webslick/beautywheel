@@ -14,44 +14,9 @@ const TGAPI = {
 function botStart (ADMINSETTINGS) {
   Pages = require('./pages');
 
-  Pages.changePage(ADMINSETTINGS,'main',Pages.main); // Главная
-  // Pages.changePage(ADMINSETTINGS,'sale',Pages.sale); // продажа
-  // Pages.changePage(ADMINSETTINGS,'purchase',Pages.purchase); // покупка
-  // Pages.changePage(ADMINSETTINGS,'addlot',Pages.addlot); // добавить лот
-  // Pages.changePage(ADMINSETTINGS,'replace',Pages.replace); // изменить лот
-  // Pages.changePage(ADMINSETTINGS,'dellot',Pages.dellot); // удалить лот
-  // Pages.changePage(ADMINSETTINGS,'support',Pages.support); // поддержка    
-
-  // token_TG = JSON.parse(ADMINSETTINGS.tokens).tg_tokens[0];
+  Pages.changePage(ADMINSETTINGS,'main',Pages.main); // Главная 
   
   const bot = new TelegramBot(process.env.TGBOT_API_KEY, { polling: true });
-
-  // var add_lot = false;
-  // var change_lot = false;
-  // var del_lot = false;
- 
-  // var add_photo = false;
-  // var edit_photo = false;
-  // var tmp_photo_id = ''; 
-  // var tmp_photo_lot = ''; 
-  // var photo_id = '';
-  // var photo_lot = '';
- 
-  // var add_name = false;
-  // var edit_name = false;
-  // var tmp_name_lot = ''; 
-  // var name_lot = '';
-
-  // var add_list = false;
-  // var edit_list = false;
-  // var tmp_list_lot = '';
-  // var list_lot = '';
-  
-  // var add_ceil = false;
-
-  // var edit_ceil = false;
-  // var tmp_ceil_lot = ''; 
-  // var ceil_lot = '';
  
   bot.on('message', async (msg, { type }) => {
     try { 
@@ -59,6 +24,7 @@ function botStart (ADMINSETTINGS) {
       const { date, message_id, text, chat: { id, username }, from: { is_bot, last_name, first_name, language_code} } = msg;
  
       var uniqm = false;
+      
       console.log(msg)
       if(msg?.web_app_data?.data) {
         try {
@@ -86,42 +52,23 @@ function botStart (ADMINSETTINGS) {
         } catch (e) {
             console.log(e);
         }
-    }
-   
-
-
-// console.log(type,"type")
+      }
   
-      // if (text === '/start') { uniqm = await SESSION.isUniqmUser(id); }
-
       if (
         text === `/reboot ${ADMINSETTINGS.password}` 
         || text === '/start'
-        || text === `/help` 
-        || text === '📕 Продать'
-        || text === '📗 Купить'
-        || text === '⤴️ Главное меню'
-        || text === '👤 Мой аккаунт'
-        || text === '📥 Добавить лот'
-        || text === '📤 Удалить лот'
-        || text === '📮 Поддержка'
-        || text === '📸 фото'
-        || text === '📃 Описание'
-        || text === '📃 Название'
-        || text === '💵 Цена'
-        || text === '🔢 Номер лота'
-        || text === '📤 Подтвердить удаление'
-        || text === '📞 Связаться'
+        || text === `/help`  
       ) {
 
         // if(SESSION.isFerstSession(id) && uniqm) { // Зашел в первый раз 
           if (text === '/start') {
             console.log('КОМАНДА',text)
+            console.log('Pages.inline_main.buttons',Pages)
 
-            await bot.sendPhoto(msg.chat.id, path.resolve('bot_TG_API', './assets/logo.png'), { 
-              caption: `${Pages.main.text.replace ('*Наш бот поможет Вам:*',`🔥 *${first_name}, наш бот поможет Вам :*`)}`,
+            await bot.sendPhoto(msg.chat.id, path.resolve('bot_TG_API', './assets/lera.jpg'), { 
+              caption: `${Pages.main.text.replace ('*Наш бот поможет Вам:*',`*${first_name}, приглашаю тебя принять участие в нашем розыгрыше призов?*`)}`,
               reply_markup: { 
-                keyboard: Pages.main.buttons, 
+                inline_keyboard: Pages.main.buttons, 
                 resize_keyboard: true
               }, 
               parse_mode: 'Markdown'
@@ -436,128 +383,8 @@ function botStart (ADMINSETTINGS) {
         //         parse_mode: 'Markdown',
         //       });
         //     }
-      
-  
-        //     if (text === 'Рекрутинг') {
-        //       await bot.sendMessage(id,Pages.recruiting.text,{
-        //         reply_markup: {
-        //           keyboard: Pages.recruiting.buttons,
-        //           resize_keyboard: true
-        //         },
-        //         parse_mode: 'Markdown',
-        //       });
-        //       active_page = 'recruting';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-
-
-        //     if (text === 'Назад') {
-        //       await bot.sendMessage(id,Pages.recruiting.text,{
-        //         reply_markup: {
-        //           keyboard: Pages.recruiting.buttons,
-        //           resize_keyboard: true
-        //         },
-        //         parse_mode: 'Markdown',
-        //       });
-        //       active_page = 'recruting';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-        
-        //     if (text === 'Проверка') {
-        //       await bot.sendMessage(id,Pages.verification.text,{
-        //         reply_markup: {
-        //           keyboard: Pages.verification.buttons,
-        //           resize_keyboard: true
-        //         },
-        //         parse_mode: 'Markdown',
-        //       });
-        //       active_page = 'verification';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-        
-        //     if (text === 'Уведомления') {
-        //       await bot.sendMessage(id,Pages.notifications.text,{
-        //         reply_markup: {
-        //           keyboard: Pages.notifications.buttons,
-        //           resize_keyboard: true
-        //         },
-        //         parse_mode: 'Markdown',
-        //       });
-        //       active_page = 'notifications';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-        
-        //     if (text === 'Помощь') {
-        //       await bot.sendMessage(id,Pages.main.text,{
-        //       // await bot.sendMessage(id,Pages.help.text,{
-        //         reply_markup: {
-        //           keyboard: Pages.main.buttons,
-        //           resize_keyboard: true
-        //         },
-        //         parse_mode: 'Markdown',
-        //       });
-        //       active_page = 'help';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-        
-          
-        
-        //     if (text === 'Поиск команды') {
-        //       await bot.sendMessage(id,Pages.team_search.text,{
-        //         reply_markup: {
-        //           keyboard: Pages.team_search.buttons,
-        //           resize_keyboard: true
-        //         },
-        //         parse_mode: 'Markdown',
-        //       });
-        //       active_page = 'team_search';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-        
-        //     if (text === 'Поиск бойца') {
-        //       await bot.sendMessage(id,Pages.fighter_search.text,{
-        //         reply_markup: {
-        //           keyboard: Pages.fighter_search.buttons,
-        //           resize_keyboard: true
-        //         },
-        //         parse_mode: 'Markdown',
-        //       });
-        //       active_page = 'fighter_search';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }    
-            
-        //     if (text === 'Все категории') {
-        //       active_page = 'all_categories';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-            
-        //     if (text === 'Привода') {
-        //       active_page = 'gears';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-        
-        //     if (text === 'Аксессуары и защита') {
-        //       active_page = 'accessory';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-        
-        //     if (text === 'Снаряжение') {
-        //       active_page = 'Equipment';
-        //       SESSION.putUserSession(id,{ info_user: { active_page } });
-        //     }
-        
-        //     if (text === 'Включить уведомление') {
-        //       await bot.sendMessage(id,'Пожалуйста введите запрос для включения уведомления...',{
-        //           reply_markup: JSON.stringify({
-        //             inline_keyboard: Pages.keyboard_notifications_btn_msg,
-        //             // keyboard: Pages.main.buttons,
-        //             resize_keyboard: true
-        //           }),
-        //           parse_mode: 'Markdown',
-        //       });
-        //     }
-        //   }
-        // }
+       
+   
       } else { // если не команда а просто сообщение
    
         console.log('НЕКОМАНДА')

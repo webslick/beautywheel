@@ -9276,11 +9276,6 @@ react-scripts@3.4.3:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-wheel-of-prizes@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-wheel-of-prizes/-/react-wheel-of-prizes-1.0.4.tgz#f2058178a7db881daa5494f31ce5f7845f781964"
-  integrity sha512-hT6xqfaBBk3Uny2sHVkpHk/v+DbwRqv+E8eLb8REA6Im8OssvAKqMr5NHkaB3XH3BUCvQn/eHV/qQL7TlHMs/Q==
-
 react@17.0.0:
   version "17.0.0"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.0.tgz#ad96d5fa1a33bb9b06d0cc52672f7992d84aa662"

@@ -9,8 +9,7 @@ const db = require('./models/index');
 
 const GLOBAL_UNIQUE_SESSIONS = [];
 const LOCAL_USER_SESSIONS = [];
-
-  
+ 
 function initionalUserLocalSession(info) { // инициализация локальной сессии
   const { date, from: { id, first_name, last_name, username } } = info;
   const user = {

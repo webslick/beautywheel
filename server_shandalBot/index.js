@@ -6,7 +6,7 @@ const config = require('config');
 const router = require('../routers/router');
 const cors = require('cors');
 const cookieParser = require('cookie-parser'); 
-const fileUpload = require("express-fileupload"); 
+// const fileUpload = require("express-fileupload"); 
 const PORT = config.get('Server.port') || 8080;
 const SESSION = require('../db/index');
 const TGAPI = require ('../bot_TG_API/index'); 
@@ -27,10 +27,10 @@ app.use(cors({
 }
 ));
  
-app.use(fileUpload({
-  createParentPath: true,
-  parseNested: true
-}));
+// app.use(fileUpload({
+//   createParentPath: true,
+//   parseNested: true
+// }));
 
 app.use(express.json());
 app.use(cookieParser());
@@ -47,16 +47,14 @@ if (process.env.NODE_ENV === 'production') {
   })
 } 
 
-app.listen(PORT,async() => {
-  // console.log(await SESSION.searchInTables('user_me',''))
-  SESSION.getAdminItems().then(ADMINSETTINGS => {
+app.listen(PORT,async() => { 
+ const ADMINSETTINGS = await SESSION.getAdminItems(); 
  console.log(ADMINSETTINGS)
     if(ADMINSETTINGS.toogle_status_bot) {
       TGAPI.initialBotListner(ADMINSETTINGS);
     } else {
       console.log('TELEGRAMM BOT NO CONECTION...!');
-    }
-  })
+    } 
 
   // const garbageInterval = setInterval(() => { SESSION.garbageSessions(); console.log('Проведена очистка сесии',SESSION.LOCAL_USER_SESSIONS) },60000 * 5)
   // const updateUsersInterval = setInterval(async() => {
