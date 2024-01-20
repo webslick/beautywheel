@@ -62,9 +62,9 @@ const {tg} = useTelegram()
     
     // tg.MainButton.text = "GUGA";
   
-    useCallback(()=>{
-      // tg.sendData(JSON.stringify({userinfo: tg.initDataUnsafe.user, prize: prizeNumber})); 
-    },[])
+    // useCallback(()=>{
+    //   tg.sendData(JSON.stringify({userinfo: tg.initDataUnsafe.user, prize: prizeNumber})); 
+    // },[])
     console.log("stoppppppppp");
     setMustSpin(false);
   }
