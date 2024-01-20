@@ -3,13 +3,18 @@ const v8 = require('v8');
 const app = express();
 const path = require('path');
 const config = require('config');
-const router = require('../routers/router');
 const cors = require('cors');
 const cookieParser = require('cookie-parser'); 
-// const fileUpload = require("express-fileupload"); 
+// const fileUpload = require("express-fileupload");
+// app.use(fileUpload({
+  //   createParentPath: true,
+  //   parseNested: true
+  // })); 
 const PORT = config.get('Server.port') || 8080;
+const router = require('../routers/router');
 const SESSION = require('../db/index');
 const TGAPI = require ('../bot_TG_API/index'); 
+const errorMiddleware = require('../middelwares/error-middleware');
  
 app.use(cors({
   credentials: true, 
@@ -26,16 +31,10 @@ app.use(cors({
   }
 }
 ));
- 
-// app.use(fileUpload({
-//   createParentPath: true,
-//   parseNested: true
-// }));
-
+  
 app.use(express.json());
 app.use(cookieParser());
- 
-const errorMiddleware = require('../middelwares/error-middleware');
+  
 app.use('/api',router);
 
 app.use(errorMiddleware);
@@ -48,8 +47,8 @@ if (process.env.NODE_ENV === 'production') {
 } 
 
 app.listen(PORT,async() => { 
- const ADMINSETTINGS = await SESSION.getAdminItems(); 
- console.log(ADMINSETTINGS)
+    const ADMINSETTINGS = await SESSION.getAdminItems(); 
+    console.log(ADMINSETTINGS)
     if(ADMINSETTINGS.toogle_status_bot) {
       TGAPI.initialBotListner(ADMINSETTINGS);
     } else {

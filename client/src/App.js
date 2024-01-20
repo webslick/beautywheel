@@ -1,4 +1,4 @@
-import React, { useEffect,useCallback, useState } from "react"; 
+import React, { useEffect, useCallback, useState } from "react"; 
 import { Wheel } from "react-custom-roulette";  
 import useTelegram from './hooks/useTelegram';
 import Button from './components/buttons'
@@ -13,7 +13,9 @@ const {tg} = useTelegram()
     tg.ready()
     console.log(tg) 
   },[tg])
+
   // useScript("https://telegram.org/js/telegram-web-app.js");
+
   const data = [
     { option: "", style: { backgroundColor: "hsl(0 0% 40%)", textColor: "white" }, chance: 0 },
     { option: "Губы Бесплатно", style: { backgroundColor: "hsl(133 58% 39%)", textColor: "white" }, chance: 0 },
@@ -24,6 +26,7 @@ const {tg} = useTelegram()
     { option: "Лифтинг 7500р", style: { backgroundColor: "hsl(91 43% 54%)", textColor: "white" }, chance: 0 },
     { option: "VIP чистка 2990р", style: { backgroundColor: "hsl(140 36% 74%)", textColor: "white" }, chance: 0 }
   ];
+
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
  
@@ -45,12 +48,12 @@ const {tg} = useTelegram()
     }
   };
 
-// определяем количество оборотов, которое сделает наше колесо
-const spinertia = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-};
+  // определяем количество оборотов, которое сделает наше колесо
+  const spinertia = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  };
  
   function stopSpin(e) {
     // let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
@@ -65,6 +68,7 @@ const spinertia = (min, max) => {
     console.log("stoppppppppp");
     setMustSpin(false);
   }
+
   return (
     <div className="App">
       <h2>Колесо красоты</h2>
